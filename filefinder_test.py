@@ -1,7 +1,7 @@
 import unittest
 from zipfile import ZipFile
-from sanitzier import FileFinder
-from sanitzier import Sanitizer
+from sanitizer import FileFinder
+from sanitizer import Sanitizer
 
 class FileFinderTestCase(unittest.TestCase):
     def test_listfiles(self):

@@ -52,9 +52,16 @@ class Sanitizer:
 
         return removed
 
+def identify_working_directory():
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    elif os.environ['HOME'] is not None:
+        return join(os.environ['HOME'], '.m2/repository') # Unix
+    else:
+        return join(os.environ['HOMEPATH'], '.m2/repository') # windows
 
 def sanitize():
-    filefinder = FileFinder(sys.argv[1])
+    filefinder = FileFinder(identify_working_directory())
     sanitizer = Sanitizer()
     files = filefinder.find()
     for filename in files:
