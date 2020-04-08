@@ -34,12 +34,11 @@ class Sanitizer:
         zip_in = ZipFile(zip_filename)
         zip_out = ZipFile(temp_filename, 'w')
         for item in zip_in.infolist():
-            if item.is_dir():
-                item.is_dir()
-            elif item.filename != self.remove_filename:
+            is_file = not item.is_dir()
+            if is_file and item.filename != self.remove_filename:
                 buffer = zip_in.read(item.filename)
                 zip_out.writestr(item.filename, buffer)
-            else:
+            elif is_file:
                 removed = True
         zip_out.close()
         zip_in.close()
