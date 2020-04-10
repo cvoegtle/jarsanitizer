@@ -61,13 +61,14 @@ def identify_working_directory():
 
 def home_directory():
     if 'HOME' in os.environ:
-        return os.environ['HOME'] # Unix
+        return os.environ['HOME']  # Unix
     else:
-        return os.environ['HOMEPATH'] # windows
+        return os.environ['HOMEPATH']  # windows
 
 
 def sanitize():
     filefinder = FileFinder(identify_working_directory())
+    print("bereinige die JAR-Dateien in " + filefinder.base_directory)
     sanitizer = Sanitizer()
     files = filefinder.find()
     for filename in files:
