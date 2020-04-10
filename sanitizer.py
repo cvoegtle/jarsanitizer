@@ -63,7 +63,7 @@ def home_directory():
     if 'HOME' in os.environ:
         return os.environ['HOME'] # Unix
     else:
-        return os.environ['HOMEPATH'] # must be windows
+        return os.environ['HOMEPATH'] # windows
 
 
 def sanitize():
